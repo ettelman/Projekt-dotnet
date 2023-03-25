@@ -1,0 +1,136 @@
+html {
+  font-size: 16px;
+}
+
+
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+.wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    margin-top: 1rem;
+    background-color: white;
+    border-radius: 20px;
+    border: 1px solid lightgray;
+}
+.navbar {
+    border-radius: 20px;
+}
+body {
+    margin-bottom: 60px;
+    background-color: ghostwhite;
+}
+
+.logo {
+    max-width: 400px;
+}
+
+.btn-nav {
+    background-image: linear-gradient(to right, #0f2996 0%, #000000 51%, #0f2996 100%);
+    margin: 10px;
+    padding: 10px 35px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 20px;
+    display: block;
+    border: 2px solid black;
+}
+
+    .btn-nav:hover {
+        background-position: right center; 
+        color: #fff;
+        text-decoration: none;
+    }
+.link {
+    display: inline-block;
+    margin: 1rem;
+}
+.grid-start {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+    margin: 1rem;
+}
+.small-pic {
+    width: 100px;
+    height: 100px;
+}
+.grid-3 {
+display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1rem;
+    margin: 1rem;
+}
+.grid-2 {
+display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 1rem;
+    margin: 1rem;
+}
+.mobile-only {
+    display: none;
+}
+.ghost {
+    background-color: ghostwhite;
+}
+.normal-pic {
+    max-width: 300px;
+    margin: 1rem;
+}
+.big-pic {
+    max-width: 100%;
+}
+.no-list {
+    list-style: none;
+}
+@media (max-width: 1200px) {
+    .grid-3 {
+        grid-template-columns: 1fr 1fr;
+    }
+    .logo {
+        max-width: 300px;
+    }
+    .mobile-only {
+        display: block;
+        text-align: center;
+    }
+
+    .desktop-only {
+        display: none;
+    }
+}
+
+
+@media (max-width: 900px) {
+    html {
+        font-size: 14px;
+    }
+
+    .grid-3, .grid-start, .grid-2 {
+        display: block;
+        text-align: center;
+    }
+
+    .small-pic {
+        width: 50px;
+        height: 50px;
+    }
+
+    .wrapper {
+        margin: 0.5rem;
+    }
+    .btn-nav {   
+        padding: 10px 10px;
+    }
+    }

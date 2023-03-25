@@ -1,0 +1,43 @@
+﻿@model Projekt_dotnet.Models.Cd
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@{
+    ViewData["Title"] = "Details for " + Model.Name;
+}
+ @if (SignInManager.IsSignedIn(User))
+                {
+<div>
+<h1>Details for @Html.DisplayFor(model => model.Name)</h1>
+
+
+    <hr />
+    <article class="ghost grid-2">
+        <div class="part">
+            <img src="~/images/@Html.DisplayFor(model => model.ImageName)" alt="@Html.DisplayFor(model => model.Title)" class="big-pic">
+        </div>
+        <div class="part-bigger">
+            <ul class="no-list">
+                    <li><b>@Html.DisplayNameFor(model => model.Name)</b>: @Html.DisplayFor(model => model.Name)</li>
+                   <li> <b>@Html.DisplayNameFor(model => model.Price)</b>: @Html.DisplayFor(model => model.Price)</li>
+                    <li><b>@Html.DisplayNameFor(model => model.Category)</b>: @Html.DisplayFor(model => model.Category)</li>
+                    <li><b>@Html.DisplayNameFor(model => model.Artist)</b>: @Html.DisplayFor(model => model.Artist)</li>
+                    <li><b>@Html.DisplayNameFor(model => model.Title)</b>: @Html.DisplayFor(model => model.Title)</li>
+                    <li><b>@Html.DisplayNameFor(model => model.ImageName)</b>: @Html.DisplayFor(model => model.ImageName)</li>
+                </ul>  
+        </div>
+    </article>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+        
+    <a asp-action="List">Back to List</a>
+</div>
+</div>
+                } else {
+    <div class="warning">
+        You are currently not logged in and can't view this page <br />
+        <a asp-action="Index">Go to Home</a>
+        <a class="link" asp-area="Identity" asp-page="/Account/Login">Login</a>
+    </div>
+                }

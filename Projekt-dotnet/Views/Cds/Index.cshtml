@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Projekt_dotnet.Models.Cd>
+@{
+    ViewData["Title"] = "Förstasidan";
+    int i = 0;
+}
+
+<div class="grid-start">
+    <div class="small-grid">
+    <h1>Welcome</h1>
+        <p>Welcome to Retro-CD. In this database CD's from all over the world are stored together with coverart for informational purpose.
+            Feel free to register a user and add your own CD's to the database. It's free!
+        </p>
+        <h2>Disc example in the database</h2>
+       
+        @foreach (var item in Model)
+        {
+            <article class="ghost grid-2">
+                <div class="part">
+                    <img src="~/images/@item.ImageName" alt="@item.Title" class="small-pic">
+                </div>
+                <div class="part">
+                    <h2>@Html.DisplayFor(modelItem => item.Name)</h2>
+
+                    @Html.DisplayFor(modelItem => item.Price) :-<br />
+
+                    @Html.DisplayFor(modelItem => item.Category) <br />
+
+                    @Html.DisplayFor(modelItem => item.Artist)
+                </div>
+            </article>
+            
+            i++;
+            if (i == 2)
+            {
+                break;
+            }           
+        }
+    </div>
+    <div class="small-grid">
+<h1>About Audio CD's</h1>
+        <img class="normal-pic" src="~/CDDA.png" alt="Compact Disc Logotyp" />
+        <p>
+            The logical format of an audio CD (officially Compact Disc Digital Audio or CD-DA) is described in a document produced in 1980 by the format's joint creators, 
+            Sony and Philips.[21] The document is known colloquially as the Red Book CD-DA after the color of its cover. The format is a two-channel 16-bit PCM encoding at 
+            a 44.1 kHz sampling rate per channel.
+        </p>
+            
+            <p>Four-channel sound was to be an allowable option within the Red Book format, but has never been implemented. Monaural audio 
+            has no existing standard on a Red Book CD; thus, the mono source material is usually presented as two identical channels in a standard Red Book stereo track 
+            (i.e., mirrored mono); an MP3 CD, however, can have audio file formats with mono sound. </p>
+
+            <p>
+            CD-Text is an extension of the Red Book specification for an audio CD that allows for the storage of additional text information (e.g., album name, song name, artist) 
+            on a standards-compliant audio CD. The information is stored either in the lead-in area of the CD, where there are roughly five kilobytes of space available or in the 
+            subcode channels R to W on the disc, which can store about 31 megabytes.
+            <br />
+            Source: <a href="https://en.wikipedia.org/wiki/Compact_disc#Audio_CD">Wikipedia</a>
+        </p>
+     
+    </div>
+</div>

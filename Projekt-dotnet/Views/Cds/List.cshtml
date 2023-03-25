@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Projekt_dotnet.Models.Cd>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    ViewData["Title"] = "Index-Cds";
+}
+
+<h1>All CDs</h1>
+ @if (SignInManager.IsSignedIn(User))
+                {
+<p>
+    <a asp-action="Create">Create new entry</a>
+</p>
+                }
+          <div class="grid-start grid-3">
+@foreach (var item in Model) {
+        <article class="ghost grid-2">
+            <div class="part">
+        <img src="~/images/@item.ImageName" alt="@item.Title" class="small-pic">
+        </div>
+        <div class="part">
+        <h2>@Html.DisplayFor(modelItem => item.Name)</h2>
+            
+                @Html.DisplayFor(modelItem => item.Price) :-<br />
+
+                @Html.DisplayFor(modelItem => item.Category) <br />
+            
+                @Html.DisplayFor(modelItem => item.Artist)
+           
+            
+                @if (SignInManager.IsSignedIn(User))
+                {
+                <div class="edit">                  
+                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </div>
+                }
+        </div>
+    </article>
+}
+</div>
