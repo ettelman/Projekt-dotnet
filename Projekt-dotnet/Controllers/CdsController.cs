@@ -26,9 +26,9 @@ namespace Projekt_dotnet.Controllers
         // GET: Cds
         public async Task<IActionResult> Index()
         {
-              return _context.Cd != null ? 
-                          View(await _context.Cd.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.Cd'  is null.");
+            return _context.Cd != null ?
+                        View(await _context.Cd.ToListAsync()) :
+                        Problem("Entity set 'ApplicationDbContext.Cd'  is null.");
         }
 
         // GET: Cds/Details/5
@@ -55,11 +55,22 @@ namespace Projekt_dotnet.Controllers
             return View();
         }
         // List
-        public async Task<IActionResult> List()
+        public async Task<IActionResult> List(string searchString)
         {
-            return _context.Cd != null ?
-                        View(await _context.Cd.ToListAsync()) :
-                        Problem("Entity set 'ApplicationDbContext.Cd'  is null.");
+            if (_context.Cd == null)
+            {
+                return Problem("Entity set 'ApplicationDbContext.Cd' is null.");
+            }
+
+            var cds = from m in _context.Cd
+                      select m;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                cds = cds.Where(s => s.Name!.Contains(searchString));
+            }
+
+            return View(await cds.ToListAsync());
         }
 
         // POST: Cds/Create

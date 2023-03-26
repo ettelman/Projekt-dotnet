@@ -8,11 +8,19 @@
 }
 
 <h1>All CDs</h1>
+<form asp-controller="Cds" asp-action="List" method="get">
+    <p>
+        <h3>Search by title</h3>
+        Title: <input type="text" name="SearchString" />
+        <input type="submit" value="Search" />
+    </p>
+</form>
  @if (SignInManager.IsSignedIn(User))
                 {
 <p>
     <a asp-action="Create">Create new entry</a>
 </p>
+   
                 }
           <div class="grid-start grid-3">
 @foreach (var item in Model) {
