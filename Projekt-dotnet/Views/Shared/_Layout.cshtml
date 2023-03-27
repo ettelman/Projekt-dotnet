@@ -9,8 +9,9 @@
     <link rel="stylesheet" href="~/Projekt_dotnet.styles.css" asp-append-version="true" />
 </head>
 <body>
+    <a class="skip-nav" href="#main-content">Skip Navigation</a>
     <div class="wrapper">
-    <header>
+    <header>  
             <a class="navbar-brand mobile-only" asp-area="" asp-controller="Home" asp-action="Index"><img class="logo" src="~/retrocd.png" /></a>
             <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
                 <a class="navbar-brand desktop-only" asp-area="" asp-controller="Home" asp-action="Index"><img class="logo" src="~/retrocd.png" /></a>
@@ -39,15 +40,15 @@
         </nav>
     </header>
     <div class="container">
-        <main role="main" class="pb-3">
+        <main role="main" class="pb-3" id="main-content">
             @RenderBody()
         </main>
     </div>
 
     <footer class="border-top footer text-muted">
         <div class="container">
-        <a asp-area="" asp-controller="Home" asp-action="Info">Information</a>
-        </div>
+                <a asp-area="" asp-controller="Home" asp-action="Info">Information</a> | <a asp-area="" asp-controller="Cds" asp-action="List">Cds</a> | <a href="mailto:info@retro-cd.com">Contact</a> | Copyright 2023 - RetroCD
+            </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

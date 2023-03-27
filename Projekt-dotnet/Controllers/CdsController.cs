@@ -54,20 +54,22 @@ namespace Projekt_dotnet.Controllers
         {
             return View();
         }
-        // List
+        // GET: Cds/List
         public async Task<IActionResult> List(string searchString)
         {
             if (_context.Cd == null)
             {
                 return Problem("Entity set 'ApplicationDbContext.Cd' is null.");
             }
-
+            // fetching from db
             var cds = from m in _context.Cd
                       select m;
 
+            // checking search-string
             if (!String.IsNullOrEmpty(searchString))
             {
                 cds = cds.Where(s => s.Name!.Contains(searchString));
+                ViewData["Search"] = searchString;
             }
 
             return View(await cds.ToListAsync());
@@ -161,7 +163,7 @@ namespace Projekt_dotnet.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(List));
            } 
             return View(cd);
         }
@@ -201,7 +203,7 @@ namespace Projekt_dotnet.Controllers
             }
             
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(List));
         }
 
         private bool CdExists(int id)

@@ -10,7 +10,7 @@
         <p>Welcome to Retro-CD. In this database CD's from all over the world are stored together with coverart for informational purpose.
             Feel free to register a user and add your own CD's to the database. It's free!
         </p>
-        <h2>Disc example in the database</h2>
+        <h2>Example entries in the database</h2>
        
         @foreach (var item in Model)
         {
@@ -21,7 +21,7 @@
                 <div class="part">
                     <h2>@Html.DisplayFor(modelItem => item.Name)</h2>
 
-                    @Html.DisplayFor(modelItem => item.Price) :-<br />
+                    $@Html.DisplayFor(modelItem => item.Price)<br />
 
                     @Html.DisplayFor(modelItem => item.Category) <br />
 

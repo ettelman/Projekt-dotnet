@@ -1,7 +1,22 @@
+@import url('https://necolas.github.io/normalize.css/8.0.1/normalize.css');
+
 html {
-  font-size: 16px;
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+.skip-nav {
+    background: black;
+    font-size: 150%;
+    position: absolute;
+    transform: translateY(-150%);
+    transition: transform 325ms ease-in;
 }
 
+    .skip-nav:focus {
+        transform: translateY(0%);
+        transform: translateX(200%);
+        z-index: 100;
+    }
 
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
@@ -63,8 +78,8 @@ body {
     margin: 1rem;
 }
 .small-pic {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
 }
 .grid-3 {
 display: grid;
@@ -132,5 +147,8 @@ display: grid;
     }
     .btn-nav {   
         padding: 10px 10px;
+    }
+    .normal-pic, logo {
+        max-width: 80%;
     }
     }
